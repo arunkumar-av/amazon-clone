@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "install-offline": "npm ci --offline --ignore-scripts --cache .offline-npm",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
