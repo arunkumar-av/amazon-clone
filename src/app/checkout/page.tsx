@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useCartStore } from '@/lib/cartStore';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Checkout() {

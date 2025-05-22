@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Header = () => {
   return (
@@ -95,7 +94,7 @@ const Header = () => {
           </svg>
           All
         </p>
-        <p className="link">Today's Deals</p>
+        <p className="link">Today&apos;s Deals</p>
         <p className="link">Customer Service</p>
         <p className="link">Registry</p>
         <p className="link">Gift Cards</p>

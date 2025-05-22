@@ -2,11 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useCartStore } from '@/lib/cartStore';
 
 const CartIcon = () => {
-  const items = useCartStore((state) => state.items);
   const totalItems = useCartStore((state) => state.getTotalItems());
 
   return (

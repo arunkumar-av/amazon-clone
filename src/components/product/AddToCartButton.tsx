@@ -3,7 +3,6 @@
 import React from 'react';
 import { useCartStore } from '@/lib/cartStore';
 import { Product } from '@/lib/data';
-import { useRouter } from 'next/navigation';
 
 interface AddToCartButtonProps {
   product: Product;
@@ -12,7 +11,6 @@ interface AddToCartButtonProps {
 
 const AddToCartButton = ({ product, className = '' }: AddToCartButtonProps) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  const router = useRouter();
 
   const handleAddToCart = () => {
     addToCart(product);

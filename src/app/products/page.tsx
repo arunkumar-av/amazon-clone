@@ -6,7 +6,6 @@ import Footer from '@/components/layout/Footer';
 import Sidebar from '@/components/layout/Sidebar';
 import ProductCard from '@/components/product/ProductCard';
 import { products, categories } from '@/lib/data';
-import { useSearchParams } from 'next/navigation';
 
 export default function Products() {
   // In a real app, we would use useSearchParams() to get filter parameters
