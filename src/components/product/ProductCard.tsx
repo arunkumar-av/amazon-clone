@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 
 interface ProductCardProps {
@@ -14,7 +13,6 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
-  id,
   title,
   price,
   rating,
@@ -23,8 +21,6 @@ const ProductCard = ({
   category,
   hasPrime = false,
 }: ProductCardProps) => {
-  const MAX_RATING = 5;
-  const MIN_RATING = 1;
 
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10 rounded-md">

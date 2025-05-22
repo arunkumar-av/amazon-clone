@@ -31,7 +31,7 @@ export default function SearchResults({ searchParams }: { searchParams: { q: str
             <div className="mb-4">
               <h1 className="text-3xl font-bold">Search Results</h1>
               <p className="text-sm text-gray-500">
-                {filteredProducts.length} results for "{query}"
+                {filteredProducts.length} results for &quot;{query}&quot;
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export default function SearchResults({ searchParams }: { searchParams: { q: str
                 </svg>
                 <h2 className="text-xl font-medium mb-2">No results found</h2>
                 <p className="text-gray-500 mb-4">
-                  We couldn't find any products matching "{query}".
+                  We couldn&apos;t find any products matching &quot;{query}&quot;.
                 </p>
                 <div className="text-sm text-gray-700">
                   <p>Try checking your spelling or using more general terms.</p>
