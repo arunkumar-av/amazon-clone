@@ -56,7 +56,7 @@ A fully functional Amazon-like e-commerce website built with Next.js, TypeScript
 
 2. Install dependencies
    ```bash
-   npm run install-offline
+   npm install
    ```
 
 3. Run the development server
