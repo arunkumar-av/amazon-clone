@@ -1,11 +1,12 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { PRIME_LOGO_DATA_URL } from '@/components/ui/Image';
+import AddToCartButton from './AddToCartButton';
 
 interface ProductCardProps {
   id: string;
   title: string;
   price: number;
-  rating: number;
+  rating: number | { rate: number; count: number };
   image: string;
   description: string;
   category: string;
@@ -13,6 +14,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   title,
   price,
   rating,
@@ -21,25 +23,25 @@ const ProductCard = ({
   category,
   hasPrime = false,
 }: ProductCardProps) => {
-
+  // Product data is passed directly to AddToCartButton
+  
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10 rounded-md">
-      <p className="absolute top-2 right-2 text-xs italic text-gray-400">{category}</p>
-
-      <div className="relative h-52 mx-auto mb-3">
+      <p className="absolute top-2 right-2 text-xs italic text-gray-400">{category}</p>      <div className="relative h-52 w-full mx-auto mb-3">
         <Image
           src={image}
           alt={title}
-          layout="fill"
-          objectFit="contain"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: "contain" }}
           className="cursor-pointer"
         />
       </div>
 
-      <h4 className="my-3 line-clamp-2 font-medium">{title}</h4>
-
-      <div className="flex">
-        {Array(rating)
+      <h4 className="my-3 line-clamp-2 font-medium">{title}</h4>      <div className="flex">
+        {Array(typeof rating === 'number' 
+          ? Math.round(rating) 
+          : Math.round(rating.rate))
           .fill(0)
           .map((_, i) => (
             <svg
@@ -65,23 +67,29 @@ const ProductCard = ({
       </div>
 
       {hasPrime && (
-        <div className="flex items-center space-x-2 -mt-5 mb-3">
-          <div className="w-12">
-            <Image
-              src="https://links.papareact.com/fdw"
-              alt="Prime"
-              width={48}
-              height={48}
-              layout="responsive"
-            />
-          </div>
+        <div className="flex items-center space-x-2 -mt-5 mb-3">            <div className="w-12">
+              <Image
+                src={PRIME_LOGO_DATA_URL}
+                alt="Prime"
+                width={48}
+                height={48}
+              />
+            </div>
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
-      )}
-
-      <button className="mt-auto button bg-[#F7CA00] border border-[#F7CA00] rounded-md p-2 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-yellow-500 active:from-yellow-500 hover:bg-[#F0B800]">
-        Add to Cart
-      </button>
+      )}      <AddToCartButton 
+        product={{ 
+          id, 
+          title, 
+          price, 
+          rating: typeof rating === 'number' ? { rate: rating, count: 0 } : rating, 
+          image, 
+          description, 
+          category, 
+          hasPrime 
+        }} 
+        className="mt-auto"
+      />
     </div>
   );
 };

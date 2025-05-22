@@ -4,7 +4,7 @@ import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useCartStore } from '@/lib/cartStore';
-import Image from 'next/image';
+import Image, { PRIME_LOGO_DATA_URL } from '@/components/ui/Image';
 import Link from 'next/link';
 
 export default function Cart() {
@@ -50,13 +50,13 @@ export default function Cart() {
             <div className="text-right text-sm text-gray-500 mt-2 mb-4">Price</div>
             
             {items.map((item) => (
-              <div key={item.id} className="border-b py-4 flex">
-                <div className="relative h-36 w-36 flex-shrink-0">
+              <div key={item.id} className="border-b py-4 flex">                <div className="relative h-36 w-36 flex-shrink-0">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    sizes="150px"
+                    style={{ objectFit: "contain" }}
                   />
                 </div>
                 
@@ -68,14 +68,12 @@ export default function Cart() {
                   <p className="text-sm text-green-600 mb-2">In Stock</p>
                   
                   {item.hasPrime && (
-                    <div className="flex items-center space-x-2 mb-2">
-                      <div className="w-12">
+                    <div className="flex items-center space-x-2 mb-2">                      <div className="w-12">
                         <Image
-                          src="https://links.papareact.com/fdw"
+                          src={PRIME_LOGO_DATA_URL}
                           alt="Prime"
                           width={48}
                           height={48}
-                          layout="responsive"
                         />
                       </div>
                       <span className="text-xs text-gray-500">FREE Next-day Delivery</span>

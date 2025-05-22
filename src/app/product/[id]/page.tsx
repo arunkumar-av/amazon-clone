@@ -1,9 +1,12 @@
+'use client';
+
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { products } from '@/lib/data';
-import Image from 'next/image';
+import Image, { PRIME_LOGO_DATA_URL } from '@/components/ui/Image';
 import Link from 'next/link';
+import AddToCartButton from '@/components/product/AddToCartButton';
 
 export default function ProductDetail({ params }: { params: { id: string } }) {
   // In a real app, we would fetch the product by ID from an API
@@ -30,12 +33,12 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Product Image */}
             <div className="flex justify-center items-center bg-white p-4">
-              <div className="relative h-[300px] w-full">
-                <Image
+              <div className="relative h-[300px] w-full">                <Image
                   src={product.image}
                   alt={product.title}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: "contain" }}
                 />
               </div>
             </div>
@@ -85,14 +88,12 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 </div>
                 
                 {product.hasPrime && (
-                  <div className="flex items-center mt-2">
-                    <div className="w-12">
+                  <div className="flex items-center mt-2">                    <div className="w-12">
                       <Image
-                        src="https://links.papareact.com/fdw"
+                        src={PRIME_LOGO_DATA_URL}
                         alt="Prime"
                         width={48}
                         height={48}
-                        layout="responsive"
                       />
                     </div>
                     <span className="text-xs text-gray-500 ml-2">FREE Next-day Delivery</span>
@@ -104,11 +105,11 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 <h2 className="font-medium mb-2">About this item</h2>
                 <p className="text-sm text-gray-700">{product.description}</p>
               </div>
-              
-              <div className="mt-4 space-y-3">
-                <button className="w-full bg-[#FFD814] hover:bg-[#F7CA00] border border-[#FCD200] rounded-full py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                  Add to Cart
-                </button>
+                <div className="mt-4 space-y-3">
+                <AddToCartButton 
+                  product={product}
+                  className="w-full rounded-full py-2"
+                />
                 <button className="w-full bg-[#FFA41C] hover:bg-[#FA8900] border border-[#FF8F00] rounded-full py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
                   Buy Now
                 </button>

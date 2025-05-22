@@ -1,0 +1,19 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.8.2
+2 info using node@v20.19.2
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\projects\amazon-clone\.npmrc
+5 silly config load:file:C:\Users\paxv\.npmrc
+6 silly config load:file:C:\Users\paxv\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm exec tsc --noEmit src\components\ui\Banner.tsx
+8 verbose argv "exec" "--" "tsc" "--noEmit" "src\\components\\ui\\Banner.tsx"
+9 verbose logfile logs-max:10 dir:C:\projects\amazon-clone\.offline-npm\_logs\2025-05-22T20_36_22_349Z-
+10 verbose logfile C:\projects\amazon-clone\.offline-npm\_logs\2025-05-22T20_36_22_349Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly logfile done cleaning log files
+13 verbose cwd C:\projects\amazon-clone
+14 verbose os Windows_NT 10.0.22631
+15 verbose node v20.19.2
+16 verbose npm  v10.8.2
+17 verbose exit 2
+18 verbose code 2

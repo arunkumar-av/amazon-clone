@@ -1,28 +1,31 @@
+'use client';
+
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Sidebar from '@/components/layout/Sidebar';
 import ProductCard from '@/components/product/ProductCard';
 import Carousel from '@/components/ui/Carousel';
-import { products, categories, bannerImages } from '@/lib/data';
-import Image from 'next/image';
+// Import Banner directly with debugging
+import Banner from '@/components/ui/Banner';
+console.log("Imported Banner:", Banner);
+import { products, categories, banners } from '@/lib/data';
 
 export default function Home() {
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header />
       
-      <div className="max-w-screen-2xl mx-auto">
-        {/* Banner Carousel */}
+      <div className="max-w-screen-2xl mx-auto">        {/* Banner Carousel */}
         <div className="mb-8">
           <Carousel autoSlide={true} autoSlideInterval={5000}>
-            {bannerImages.map((image, i) => (
+            {banners.map((banner, i) => (
               <div key={i} className="w-full h-[300px] md:h-[400px] relative flex-shrink-0">
-                <Image
-                  src={image}
-                  alt={`Banner ${i+1}`}
-                  layout="fill"
-                  objectFit="cover"
+                <Banner 
+                  backgroundColor={banner.backgroundColor}
+                  textColor={banner.textColor}
+                  text={banner.text}
+                  imageUrl={banner.imageUrl}
                 />
               </div>
             ))}

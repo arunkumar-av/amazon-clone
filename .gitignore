@@ -38,3 +38,6 @@ deployment.zip
 .turbo
 node_modules/
 node_modules/
+
+# Offline npm cache
+.offline-npm/

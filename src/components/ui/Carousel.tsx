@@ -14,8 +14,15 @@ const Carousel = ({
   autoSlide = true,
   autoSlideInterval = 5000,
 }: CarouselProps) => {
+  // This ensures a stable rendering between server and client
+  const [isClient, setIsClient] = useState(false);
   const [curr, setCurr] = useState(0);
   const slideInterval = useRef<NodeJS.Timeout | null>(null);
+  
+  // Hydration fix - only enable client-side features after the component mounts
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const prev = () => {
     setCurr((curr) => (curr === 0 ? children.length - 1 : curr - 1));
@@ -24,9 +31,8 @@ const Carousel = ({
   const next = () => {
     setCurr((curr) => (curr === children.length - 1 ? 0 : curr + 1));
   };
-
   useEffect(() => {
-    if (!autoSlide) return;
+    if (!isClient || !autoSlide) return;
 
     const startInterval = () => {
       slideInterval.current = setInterval(() => {
@@ -41,8 +47,20 @@ const Carousel = ({
         clearInterval(slideInterval.current);
       }
     };
-  }, [autoSlide, autoSlideInterval, children.length]);
+  }, [isClient, autoSlide, autoSlideInterval, children.length]);
 
+  // Initial render that works with SSR
+  if (!isClient) {
+    return (
+      <div className="relative overflow-hidden">
+        <div className="flex">
+          {children[0]}
+        </div>
+      </div>
+    );
+  }
+
+  // Client-side render with full interactivity
   return (
     <div className="relative overflow-hidden">
       <div

@@ -1,11 +1,22 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  
   return (
     <footer className="bg-[#131A22] text-white">
       {/* Back to top button */}
-      <div className="bg-[#232F3E] p-3 text-center cursor-pointer hover:bg-[#37475A]">
+      <div 
+        onClick={scrollToTop}
+        className="bg-[#232F3E] p-3 text-center cursor-pointer hover:bg-[#37475A]"
+      >
         <p className="text-sm">Back to top</p>
       </div>
 
